@@ -2,16 +2,16 @@ import { Request, Response } from "express";
 import { AuthenticateUserService } from "../services/AuthenticateUserService";
 
 class AuthenticateUserController {
-  async handle(request: Request, response: Response): Promise<any> {
+  async handle(req: Request, res: Response): Promise<any> {
     try {
-      const { code } = request.body;
+      const { code } = req.body;
 
       const service = new AuthenticateUserService();
       const result = await service.execute(code);
 
-      response.status(200).json(result);
+      return res.json(result);
     } catch (error) {
-      response.status(error.code || 400).json({ error: error.message });
+      return res.status(error.code || 400).json({ error: error.message });
     }
   }
 }

@@ -6,7 +6,7 @@ class GetMessageController {
     try {
       const getMessageService = new GetMessageService();
 
-      const result = await getMessageService.execute();
+      const result = await getMessageService.execute({ limit: 3 });
 
       return res.json(result);
     } catch (error) {

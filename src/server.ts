@@ -1,16 +1,7 @@
-import express from "express";
-import "dotenv/config";
-import { AuthenticateUserController } from "./controllers/AuthenticateUserController";
-import { router } from "./routes";
+import { serverHttp } from "./app";
 
 const PORT = process.env.PORT || 4000;
 
-const app = express();
-
-app.use(express.json());
-
-app.use(router);
-
-app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
+serverHttp.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT} 🚀`);
 });

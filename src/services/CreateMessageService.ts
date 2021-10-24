@@ -11,6 +11,7 @@ class CreateMessageService {
     });
 
     const infoWS = {
+      id: message.id,
       user_id: message.user_id,
       text: message.text,
       created_at: message.created_at,

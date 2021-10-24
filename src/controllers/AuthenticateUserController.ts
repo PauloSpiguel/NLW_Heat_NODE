@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
 import { AuthenticateUserService } from "../services/AuthenticateUserService";
-
 class AuthenticateUserController {
-  async handle(req: Request, res: Response): Promise<any> {
+  async handle(req: Request, res: Response): Promise<Response> {
     try {
       const { code } = req.body;
 
@@ -11,7 +10,9 @@ class AuthenticateUserController {
 
       return res.json(result);
     } catch (error) {
-      return res.status(error.code || 400).json({ error: error.message });
+      return res
+        .status(error.code || 400)
+        .json({ codeError: "auth.user", error: error.message });
     }
   }
 }
